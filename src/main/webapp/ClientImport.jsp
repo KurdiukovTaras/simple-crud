@@ -12,6 +12,6 @@
 
 </head>
 <body>
-<jsp:forward page="/client"/>
+<jsp:forward page="/client?action=getAll"/>
 </body>
 </html>

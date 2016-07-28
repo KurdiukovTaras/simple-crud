@@ -36,7 +36,7 @@ public class ClientDao {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("update client set name=?, descripment=?, phonenumber=?" +
-                            "where clientid=?");
+                            "where id=?");
             // Parameters start with 1
             preparedStatement.setString(1, client.getName());
             preparedStatement.setString(2, client.getDescripment());

@@ -10,7 +10,7 @@
 
 <div id="forSearch">
     ¬±¬à¬Ú¬ã¬Ü ¬á¬à ¬ß¬à¬Þ¬Ö¬â¬å ¬Ú¬Ý¬Ú ¬Ú¬Þ¬Ö¬ß¬Ú
-    <form  action="client" method="post">
+    <form  action="client?action=searchClient" method="post">
         <input type="text" name="phoneNumber"><br/>
         <button type="submit">¬£¬í¬Ò¬â¬Ñ¬ä¬î</button>
         <br>
