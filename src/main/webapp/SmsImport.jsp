@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="/sms"/>
+<jsp:forward page="/sms?action=getAll"/>
 </body>
 </html>

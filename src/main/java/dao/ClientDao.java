@@ -95,6 +95,12 @@ public class ClientDao {
                     prepareStatement("select * from client where phonenumber=?");
             preparedStatement.setString(1, phonenumber);
             ResultSet rs = preparedStatement.executeQuery();
+            if(!rs.wasNull()){
+                client.setDescripment("Null");
+                client.setPhoneNumber(phonenumber);
+                client.setName("No name");
+              addClient(client);
+            }
             if (rs.next()) {
                 client.setId(rs.getInt("id"));
                 client.setName(rs.getString("name"));

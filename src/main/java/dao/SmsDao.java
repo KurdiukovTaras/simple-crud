@@ -1,5 +1,6 @@
 package dao;
 
+import model.Client;
 import model.Sms;
 import util.DbUtil;
 
@@ -9,13 +10,14 @@ import java.util.List;
 
 public class SmsDao {
 
+    ClientDao clientDao=new ClientDao();
     private Connection connection;
 
     public SmsDao() {
         connection = DbUtil.getConnection();
     }
 
-    public void addSms(Sms sms) {
+    public void addSms(Sms sms,int clientId) {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("insert into sms(message,readed,in_out,date_time,port,client_id) values (?, ?, ?, ?,?,? )");
@@ -25,7 +27,7 @@ public class SmsDao {
             preparedStatement.setBoolean(3, sms.getIn_out());
             preparedStatement.setTimestamp(4, sms.getDatetime());
             preparedStatement.setString(5, sms.getPort());
-            preparedStatement.setInt(6, sms.getClientId());
+            preparedStatement.setInt(6, clientId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,6 +75,9 @@ public class SmsDao {
             e.printStackTrace();
         }
         return smses;
+    }
+    public Client getClientByPhoneNumber(String phonenumber){
+        return clientDao.getClientByPhoneNumber(phonenumber);
     }
 
 }

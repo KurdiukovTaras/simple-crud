@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 public class Sms
 {
     private Client client;
-    private Integer clientId;
-    private Integer id;
+    private int clientId;
+    private int id;
     private Timestamp datetime;
     private String message;
     private Boolean readed;
@@ -14,9 +14,8 @@ public class Sms
     private String port;
 
     public Sms(){}
-    public Sms( int clientId,Timestamp datetime,String message,boolean readed, boolean in_out, String port)
+    public Sms(Timestamp datetime,String message,boolean readed, boolean in_out, String port)
     {
-        this.clientId=clientId;
         this.datetime=datetime;
         this.message=message;
         this.readed=readed;
@@ -26,14 +25,16 @@ public class Sms
 
     //Геттеры и сеттеры
 
-    public int getId() {return id;}
-    public Timestamp getDatetime() {return datetime;}
-    public String getMessage() {return message;}
-    public boolean isNew() {return (this.id == null);}
 
+
+
+//    public boolean isNew() {return (this.id == null);}
     public void setId(Integer id) {this.id = id;}
+    public int getId() {return id;}
     public void setDatetime(Timestamp datetime) {this.datetime = datetime;}
+    public Timestamp getDatetime() {return datetime;}
     public void setMessage(String message) {this.message = message;}
+    public String getMessage() {return message;}
     public void setReaded(Boolean readed) {this.readed = readed;}
     public Boolean getReaded() {return readed;}
     public int getClientId() {return clientId;}

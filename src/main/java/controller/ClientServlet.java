@@ -3,6 +3,7 @@ package controller;
 
 import dao.ClientDao;
 import model.Client;
+import model.Sms;
 
 
 import javax.servlet.ServletConfig;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Timestamp;
 
 
 public class ClientServlet extends HttpServlet {
@@ -37,25 +39,25 @@ public class ClientServlet extends HttpServlet {
                     req.getParameter("phonenumber")
                     );
             dao.updateClient(client);
-            resp.sendRedirect("sms");
         }
-
-
+        resp.sendRedirect("sms?action=getAll");
     }
 
     @Override
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        if(action.equals("updateclientbyid")) {
-            int id=getId(request);
-            final Client client= dao.getClientById(id);
-            request.setAttribute("client",client);
-            request.getRequestDispatcher("updateClient.jsp").forward(request,response);
-        }
-        else if (action.equals("getAll")) {
+        if (action.equals("getAll")) {
             request.setAttribute("clientList", dao.getAllClients());
             request.getRequestDispatcher("clientList.jsp").forward(request, response);
         }
+        else if (action.equals("updateclientbyid"))
+        {
+                int id=getId(request);
+                final Client client= dao.getClientById(id);
+                request.setAttribute("client",client);
+                request.getRequestDispatcher("updateClient.jsp").forward(request,response);
+        }
+
 
     }
     private String resetParam(String param, HttpServletRequest request) {

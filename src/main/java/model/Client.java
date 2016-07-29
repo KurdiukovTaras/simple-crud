@@ -2,7 +2,7 @@ package model;
 
 public class Client {
 
-    private Integer id;
+    private int id;
     private String name;
     private String descripment;
     private String phoneNumber;
@@ -24,7 +24,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return getName();
+        return getName()+" "+getDescripment()+" "+getPhoneNumber()+" "+getId();
     }
     //getter i setter
     public int getId() {return id;}
@@ -32,7 +32,7 @@ public class Client {
     public String getDescripment() {return descripment;}
     public String getPhoneNumber() {return phoneNumber;}
     public void setId(int id) {this.id = id;}
-    public boolean isNew() {return (this.id == null);}
+//    public boolean isNew() {return (this.id == null);}
     public void setName(String name) {this.name = name;}
     public void setDescripment(String descripment) {this.descripment = descripment;}
     public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
